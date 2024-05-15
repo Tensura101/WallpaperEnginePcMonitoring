@@ -44,6 +44,7 @@ class RoundMetric extends HTMLElement {
 	hardware = '';
 	type = '';
 	unit = '';
+	maxValueKey = undefined;
 
 	storageUpdateEnabled = false;
 
@@ -72,6 +73,7 @@ class RoundMetric extends HTMLElement {
 		this.hardware = this.getAttribute('hardware');
 		this.type = this.getAttribute('type');
 		this.unit = this.getAttribute('unit');
+		this.maxValueKey = this.getAttribute('max-value-key');
 
 
 		this.loadMetricStateFromSettings();
@@ -130,7 +132,7 @@ class RoundMetric extends HTMLElement {
 	}
 
 	updateValue(value){
-		this.value.innerText = value;
+		this.value.innerHTML = value;
 	}
 
 	getSettingsFromStorage(subKey){

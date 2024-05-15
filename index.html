@@ -27,25 +27,25 @@
 		</div>
 	</template>
 	
-	<round-metric metric-title="CPU1" hardware="CPUMonitoring" type="Load" unit="%"></round-metric>
-	<round-metric metric-title="CPU2" hardware="CPUMonitoring" type="Temp" unit="°C"></round-metric>
-	<round-metric metric-title="CPU3" hardware="CPUMonitoring" type="Consumption" unit="W"></round-metric>
-	<round-metric metric-title="CPU4" hardware="CPUMonitoring" type="AvgFrequency" unit="GHz"></round-metric>
+	<round-metric metric-title="CPU" hardware="CPUMonitoring" type="Load" unit="%"></round-metric>
+	<round-metric metric-title="CPU" hardware="CPUMonitoring" type="Temp" unit="°C"></round-metric>
+	<round-metric metric-title="CPU" hardware="CPUMonitoring" type="Consumption" unit="W"></round-metric>
+	<round-metric metric-title="CPU" hardware="CPUMonitoring" type="AvgFrequency" unit="GHz"></round-metric>
 
-	<!-- <round-metric metric-title="GPU" hardware="GPUMonitoring" type="Load" unit="%"></round-metric>
+	<round-metric metric-title="GPU" hardware="GPUMonitoring" type="Load" unit="%"></round-metric>
 	<round-metric metric-title="FPS" hardware="GPUMonitoring" type="FPS" unit=""></round-metric>
-	<round-metric metric-title="Avg. FPS" hardware="GPUMonitoring" type="AvgFps" unit=""></round-metric>
+	<round-metric metric-title="Avg FPS" hardware="GPUMonitoring" type="AvgFps" unit=""></round-metric>
 	<round-metric metric-title="GPU" hardware="GPUMonitoring" type="Consumption" unit="W"></round-metric>
 	<round-metric metric-title="GPU" hardware="GPUMonitoring" type="Temp" unit="°C"></round-metric>
 	<round-metric metric-title="GPU HotSpot" hardware="GPUMonitoring" type="HotSpot" unit="°C"></round-metric>
-	<round-metric metric-title="VRAM" hardware="GPUMonitoring" type="MemoryUsed" unit="GB"></round-metric>
+	<round-metric metric-title="VRAM" hardware="GPUMonitoring" type="MemoryUsed" max-value-key="MaxMemory" unit="GB"></round-metric>
 	
-	<round-metric metric-title="RAM" hardware="MemoryMonitoring" type="MemoryUsed" unit="GB"></round-metric> -->
+	<round-metric metric-title="RAM" hardware="MemoryMonitoring" type="MemoryUsed" max-value-key="MaxMemory" unit="GB"></round-metric>
 
 
 
 	<script src="./jquery.min.js"></script>
-  	<script src="./script.js"></script>
+  	<script src="./refresh.js"></script>
   	<script src="./roundMetric.js"></script>
 </body>
 </html>
