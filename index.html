@@ -9,7 +9,7 @@
 	<template id="round-metric">
 		<link rel="stylesheet" href="./metric.css">
 		<div id="container" class="metric-container">
-			<div class="round-metric">
+			<div id="metric" class="round-metric">
 				<strong>
 					<h2 id="title" class="round-metric-title">
 							GPU
@@ -18,14 +18,16 @@
 						10%
 					</span>
 				</strong>
+				<div id="resize" class="triangle">
+					<span class="display-none">
+						Drag Me
+					</span>
+				</div>
 			</div>
 		</div>
 	</template>
 	
-	<round-metric metric-title="dsadsadas">
-	</round-metric>
-
-	<round-metric metric-title="a">
+	<round-metric metric-title="CPU">
 	</round-metric>
 	<script src="./jquery.min.js"></script>
   	<script src="./script.js"></script>
