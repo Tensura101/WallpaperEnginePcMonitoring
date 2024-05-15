@@ -32,7 +32,7 @@
 
 .round-metric-title{
     left: 50%;
-	top: 15%;
+	top: 20%;
     transform: translate(-50%, -50%);
 	position: absolute;
 	font-size: 120%;
@@ -42,7 +42,7 @@
 	padding-right: 10px;
 	padding-bottom: 5px;
 	padding-top: 5px;
-	width: 20%;
+	width: fit-content;
 	text-align: center;
 	border-radius: 100px;
 }
@@ -50,7 +50,7 @@
 
 .round-metric-value {
 	left: 50%;
-	top: 50%;
+	top: 60%;
     transform: translate(-50%, -50%);
 	position: absolute;
 	font-size: 300%;

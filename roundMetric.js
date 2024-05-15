@@ -41,6 +41,12 @@ class RoundMetric extends HTMLElement {
 
 	interval;
 
+	hardware = '';
+	type = '';
+	unit = '';
+
+	storageUpdateEnabled = false;
+
     constructor() {
         super();
 
@@ -58,11 +64,17 @@ class RoundMetric extends HTMLElement {
 
         this.metric = shadowRoot.querySelector('#metric');
 
-		this.width = 250;
-		this.height = 250;
+
 
 		
 		this.title.innerText = this.getAttribute('metric-title');
+
+		this.hardware = this.getAttribute('hardware');
+		this.type = this.getAttribute('type');
+		this.unit = this.getAttribute('unit');
+
+
+		this.loadMetricStateFromSettings();
 
 
 		this.handleResize = this.handleResize.bind(this);
@@ -76,7 +88,6 @@ class RoundMetric extends HTMLElement {
 		document.addEventListener('mouseup', () => this.isMouseDownOnResize = false);
 		document.addEventListener('mousemove', this.handleResize);
 
-		// this.interval = setInterval(() => this.updateValue(), 1000);
     }
 
 
@@ -118,16 +129,63 @@ class RoundMetric extends HTMLElement {
 		this.height = Math.min(width, height);
 	}
 
-	updateValue(){
-		fetch('http://localhost:5050')
-			.then((response) => response.json())
-			.then( (json) => {
-				this.value.innerText = json.CPUMonitoring.Load + '%';
-				console.log(json);
-			})
-			.catch((error) => {
-				console.error(error);
-			})
+	updateValue(value){
+		this.value.innerText = value;
+	}
+
+	getSettingsFromStorage(subKey){
+		let metricSettings = null;
+		const key = `${this.hardware}.${this.type}`;
+		try {
+			metricSettings = localStorage.getItem(`${key}.${subKey}`)
+		} catch (error) {
+			console.log(error);
+		}
+
+		try {
+			metricSettings = localStorage.get(`${key}.${subKey}`) //WallpaperEngine
+		} catch (error) {
+			console.log(error);
+		}
+
+		return metricSettings;
+	}
+
+	updateMetricSettings(){
+		const key = `${this.hardware}.${this.type}`;
+		let metricSettings = {
+			width: this.width,
+			height: this.height,
+			locationX: this.locationX,
+			locationY: this.locationY
+		};
+		
+		console.log(metricSettings, Object.keys(metricSettings));
+		for (const subKey of Object.keys(metricSettings)) {
+			try {
+				localStorage.setItem(`${key}.${subKey}`, metricSettings[subKey])
+			} catch (error) {
+				console.warn(error);
+			}
+	
+			try {
+				localStorage.set(`${key}.${subKey}`, metricSettings[subKey]) //WallpaperEngine
+			} catch (error) {
+				console.warn(error);
+			}
+		}
+
+		
+
+	}
+
+	async loadMetricStateFromSettings(){
+		this.storageUpdateEnabled = false;
+		this.locationX = this.getSettingsFromStorage('locationX') ?? 600;
+		this.locationY = this.getSettingsFromStorage('locationY') ?? 600;
+		this.width = this.getSettingsFromStorage('width') ?? 250;
+		this.height = this.getSettingsFromStorage('height') ?? 250;
+		this.storageUpdateEnabled = true;
 	}
 
 
@@ -141,11 +199,17 @@ class RoundMetric extends HTMLElement {
 	set locationX(value){
 		this.#locationX = value;
 		this.container.style.left = value + 'px';
+		if(this.storageUpdateEnabled){
+			this.updateMetricSettings();
+		}
 	}
 
 	set locationY(value){
 		this.#locationY = value;
 		this.container.style.top = value + 'px';
+		if(this.storageUpdateEnabled){
+			this.updateMetricSettings();
+		}
 	}
 
 
@@ -159,11 +223,17 @@ class RoundMetric extends HTMLElement {
 	set width(value){
 		this.#width = value;
 		this.metric.style.width = value + 'px';
+		if(this.storageUpdateEnabled){
+			this.updateMetricSettings();
+		}
 	}
 
 	set height(value){
 		this.#height = value;
 		this.metric.style.height = value + 'px';
+		if(this.storageUpdateEnabled){
+			this.updateMetricSettings();
+		}
 	}
 }
 
