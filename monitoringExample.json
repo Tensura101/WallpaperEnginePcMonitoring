@@ -1,0 +1,24 @@
+{
+	"MemoryMonitoring": {
+	  "MemoryUsed": 15.84,
+	  "MaxMemory": 31.92
+	},
+	"GPUMonitoring": {
+	  "Fps": -1,
+	  "AvgFps": 0,
+	  "Temp": 49,
+	  "HotSpot": 54,
+	  "Load": 14,
+	  "Consumption": 27,
+	  "Frequency": 0.04,
+	  "MemoryUsed": 532,
+	  "MaxMemory": 11.98,
+	  "MemoryFrequency": 0.19
+	},
+	"CPUMonitoring": {
+	  "Temp": 51,
+	  "Load": 10,
+	  "Consumption": 49,
+	  "AvgFrequency": 3.96
+	}
+  }
