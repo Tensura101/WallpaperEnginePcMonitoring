@@ -3,23 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./style.css">
-	<link rel="stylesheet" href="./metric.css">
 	<title></title>
 </head>
 <body>
-	<div class="metric-container">
-		<div class="round-metric">
-				<h2 class="round-metric-title">
-					<strong>GPU</strong>
-				</h2>
-				<span class="round-metric-value">
-					<strong>
+	<template id="round-metric">
+		<link rel="stylesheet" href="./metric.css">
+		<div id="container" class="metric-container">
+			<div class="round-metric">
+				<strong>
+					<h2 id="title" class="round-metric-title">
+							GPU
+					</h2>
+					<span id="value" class="round-metric-value">
 						10%
-					</strong>
-				</span>
+					</span>
+				</strong>
+			</div>
 		</div>
-	</div>
+	</template>
+	
+	<round-metric metric-title="dsadsadas">
+	</round-metric>
+
+	<round-metric metric-title="a">
+	</round-metric>
 	<script src="./jquery.min.js"></script>
   	<script src="./script.js"></script>
+  	<script src="./roundMetric.js"></script>
 </body>
 </html>
